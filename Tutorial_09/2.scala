@@ -9,6 +9,9 @@ class Rational(n: Int, d: Int) {
 
   def neg: Rational = new Rational(-numer, denom)
 
+  def sub(that: Rational): Rational =
+    new Rational(numer * that.denom - that.numer * denom, denom * that.denom)
+
   override def toString: String = s"$numer / $denom"
 }
 
@@ -18,8 +21,13 @@ object Rational {
 
 object Main extends App {
   val x = Rational(3, 4)
-  val negX = x.neg
+  val y = Rational(5, 8)
+  val z = Rational(2, 7)
+
+  val result = x.sub(y).sub(z)
 
   println(s"x: $x")
-  println(s"negX: $negX")
+  println(s"y: $y")
+  println(s"z: $z")
+  println(s"Result of x - y - z: $result")
 }
